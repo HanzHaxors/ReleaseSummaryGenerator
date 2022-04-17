@@ -40,7 +40,7 @@ class Entry(object):
 		if scope != '':
 			scope = "to " + scope
 
-		return f" - {self.summary.strip().capitalize()} {scope}."
+		return f" - {self.summary.strip().capitalize()} {scope.strip()}."
 
 def run():
 	repo = None
