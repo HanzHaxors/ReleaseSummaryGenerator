@@ -65,9 +65,9 @@ def run():
 
 	while True:
 		end = end.parents[0]
-		commits.append(end)
 		if end.binsha == start.binsha:
 			break
+		commits.append(end)
 
 	for commit in commits:
 		msg = commit.message.strip()
