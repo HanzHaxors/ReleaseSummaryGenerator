@@ -82,7 +82,11 @@ def run():
 					break
 
 			scope = indicator.replace(type, '').replace('(', '').replace(')', '')
-			summary = msg.split(':', maxsplit=1)[1]
+			summary = msg.split(':', maxsplit=1)
+
+			if len(summary) != 2:
+				continue
+			summary = summary[1]
 
 			newEntry = Entry(type, scope, summary)
 			if commitTypes.get(newEntry.type) is None:
