@@ -65,8 +65,9 @@ def run():
 
 	while True:
 		end = end.parents[0]
+		print(end)
 		commits.append(end)
-		if end.binsha != start.binsha:
+		if end.binsha == start.binsha:
 			break
 
 	for commit in commits:
