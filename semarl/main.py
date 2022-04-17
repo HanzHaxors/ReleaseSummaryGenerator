@@ -65,7 +65,6 @@ def run():
 
 	while True:
 		end = end.parents[0]
-		print(end)
 		commits.append(end)
 		if end.binsha == start.binsha:
 			break
@@ -86,6 +85,8 @@ def run():
 			summary = msg.split(':', maxsplit=1)[1]
 
 			newEntry = Entry(type, scope, summary)
+			if commitTypes[newEntry.type] == '':
+				continue
 			entries[commitTypes[newEntry.type]].append(newEntry)
 
 	for key in entries.keys():
