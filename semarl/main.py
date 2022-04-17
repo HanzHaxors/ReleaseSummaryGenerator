@@ -85,7 +85,7 @@ def run():
 			summary = msg.split(':', maxsplit=1)[1]
 
 			newEntry = Entry(type, scope, summary)
-			if commitTypes[newEntry.type] == '':
+			if commitTypes.get(newEntry.type) is None:
 				continue
 			entries[commitTypes[newEntry.type]].append(newEntry)
 
