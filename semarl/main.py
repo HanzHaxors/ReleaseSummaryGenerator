@@ -6,10 +6,11 @@ import sys
 import git
 
 argv = sys.argv[1:]
-if len(argv) != 2:
+if len(argv) == 0:
 	print("USAGE:")
-	print("py main.py <start> <end>")
+	print("semarl <start> [end]")
 	print("\n`start` and `end` could be the commit hash or tag")
+	print("`end` defaults to latest commit")
 	exit()
 
 commitTypes = {
@@ -38,16 +39,19 @@ class Entry(object):
 	def __str__(self):
 		scope = self.scope
 		if scope != '':
-			scope = "to " + scope
+			scope = "on " + scope
 
-		return f" - {self.summary.strip().capitalize()} {scope.strip()}."
+		return f" - {self.summary.strip().capitalize()} {scope}".strip() + '.'
 
 def run():
 	repo = None
 	cwd = Path(getcwd())
 	#cwd = Path('/mnt/e/GitHub Repository/fabuya')
 	start = argv[0]
-	end = argv[1]
+	if len(argv) == 2:
+		end = argv[1]
+	else:
+		end = None
 
 	while repo is None:
 		try:
@@ -58,6 +62,9 @@ def run():
 			cwd = cwd.parent
 
 	assert not repo.bare
+
+	if end is None:
+		end = repo.commit()
 
 	start = repo.commit(start)
 	end = repo.commit(end)
@@ -98,3 +105,6 @@ def run():
 		for entry in entries[key]:
 			print(str(entry))
 		print()
+
+if __name__ == "__main__":
+	run()
