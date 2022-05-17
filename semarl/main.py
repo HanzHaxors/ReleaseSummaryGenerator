@@ -104,6 +104,8 @@ def run():
 		print(key)
 		for entry in entries[key]:
 			print(str(entry))
+		if len(entries[key]) == 0:
+			print("N/A")
 		print()
 
 if __name__ == "__main__":
