@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
 	name="semarl",
-	version="0.1.0",
+	version="0.1.1",
 	author="Hanz",
 	author_email="hanz@godot.id",
 	description="Magically turns your semantic git logs to release summary, helpful for release maintainers.",
