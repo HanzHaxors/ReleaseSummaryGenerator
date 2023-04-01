@@ -79,6 +79,8 @@ def run():
 				if latest.committed_date > c.committed_date:
 					latest = c
 			end = latest
+		if len(end.parents) == 0:
+			break # initial commit
 		if end.binsha == start.binsha:
 			break
 		commits.append(end)
