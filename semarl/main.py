@@ -72,6 +72,13 @@ def run():
 
 	while True:
 		end = end.parents[0]
+		if len(end.parents) > 1:
+			# search for latest to date
+			latest = end.parents[0]
+			for c in end.parents:
+				if latest.committed_date > c.committed_date:
+					latest = c
+			end = latest
 		if end.binsha == start.binsha:
 			break
 		commits.append(end)
