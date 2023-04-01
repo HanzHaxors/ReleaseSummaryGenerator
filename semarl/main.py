@@ -41,7 +41,7 @@ class Entry(object):
 		if scope != '':
 			scope = "on " + scope
 
-		return f" - {self.summary.strip().capitalize()} {scope}".strip() + '.'
+		return f" - {self.summary.strip()} {scope}".strip() + '.'
 
 def run():
 	repo = None
